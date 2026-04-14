@@ -855,7 +855,11 @@ def apply_to_jobs(search_terms: list[str]) -> None:
         print_lg("\n________________________________________________________________________________________________________________________\n")
         print_lg(f'\n>>>> Now searching for "{searchTerm}" <<<<\n\n')
 
-        apply_filters()
+        try:
+            apply_filters()
+        except Exception as e:
+            print_lg("⚠️ Filter setup failed → continuing without filters")
+            print_lg(e)
 
         current_count = 0
         try:
@@ -1205,14 +1209,15 @@ def main() -> None:
         if timeSaved > 0:
             timeSaved += 60
             timeSavedMsg = f"In this run, you saved approx {round(timeSaved/60)} mins ({timeSaved} secs)"
-        msg = f"{quotes}\n\n\n{timeSavedMsg}\nYou can also get your quote and name shown here, or prioritize your bug reports by supporting the project"
+        msg = f"{quotes}\n\n\n{timeSavedMsg}\nYou can edit your starting and ending messages from the RunAiBot.py file"
         pyautogui.alert(msg, "Exiting..")
         print_lg(msg,"Closing the browser...")
         if tabs_count >= 10:
             msg = "NOTE: IF YOU HAVE MORE THAN 10 TABS OPENED, PLEASE CLOSE OR BOOKMARK THEM!\n\nOr it's highly likely that application will just open browser and not do anything next time!" 
             pyautogui.alert(msg,"Info")
             print_lg("\n"+msg)
-        ##> ------ Yang Li : MARKYangL - Feature ------
+
+
         if use_AI and aiClient:
             try:
                 if ai_provider.lower() == "openai":
@@ -1236,3 +1241,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

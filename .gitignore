@@ -2,9 +2,15 @@ __pycache__
 .vscode
 .idea
 
-all excels
-all resumes
-logs
+# Data folders
+all excels/*
+all resumes/*
+logs/*
+
+# Keep folder structure
+!all resumes/.gitkeep
+!all excels/.gitkeep
+!logs/.gitkeep
 
 old
 

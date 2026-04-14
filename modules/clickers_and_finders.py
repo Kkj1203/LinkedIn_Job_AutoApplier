@@ -141,13 +141,28 @@ def company_search_click(driver: WebDriver, actions: ActionChains, companyName: 
     actions.send_keys(Keys.ENTER).perform()
     print_lg(f'Tried searching and adding "{companyName}"')
 
-def text_input(actions: ActionChains, textInputEle: WebElement | bool, value: str, textFieldName: str = "Text") -> None | Exception:
-    if textInputEle:
+def text_input(actions: ActionChains, textInputEle: WebElement | bool, value: str, textFieldName: str = "Text") -> None:
+    
+    # ✅ Step 1: Check if element exists
+    if not textInputEle:
+        print_lg(f'{textFieldName} input was not given!')
+        return
+
+    # ✅ Step 2: Check if value is valid
+    if value is None or str(value).strip() == "":
+        print_lg(f'{textFieldName} value is empty → skipping input')
+        return
+
+    try:
         sleep(1)
-        # actions.key_down(Keys.CONTROL).send_keys("a").key_up(Keys.CONTROL).perform()
         textInputEle.clear()
-        textInputEle.send_keys(value.strip())
+
+        # ✅ Always convert to string (VERY IMPORTANT)
+        safe_value = str(value).strip()
+
+        textInputEle.send_keys(safe_value)
         sleep(2)
         actions.send_keys(Keys.ENTER).perform()
-    else:
-        print_lg(f'{textFieldName} input was not given!')
+
+    except Exception as e:
+        print_lg(f'Failed to input {textFieldName}: {e}')

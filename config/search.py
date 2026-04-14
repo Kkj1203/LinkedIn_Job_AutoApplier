@@ -5,9 +5,9 @@
 search_terms = ["Data Analyst", "Junior Data Analyst", "Data Analyst Intern", "Python Developer","Junior Python Developer", "Business Analyst", "Junior Business Analyst", "Business Analyst Intern", "Data Science Intern", "Data Scientist Intern", "Data Science", "Data Scientist", "Junior Data Scientist", "Data Engineer" ,"Junior Data Engineer" ,"Data Engineer Intern" , "AI Intern", "Artificial Intelligence Intern", "Machine Learning Intern", "Machine Learning Engineer" , "Junior Machine Learning Engineer", "Junior ML Engineer", "ML Intern" , "ML Engineer"]      # (dynamic multiple search) or leave empty as []. Note that the searches will be performed in the order they are in the list, unless `randomize_search_order = True` is set. In that case, they will be randomized. Make sure to include the quotes and commas as shown in the example. You can also use boolean operators like AND, OR, NOT in your search terms just like you do in LinkedIn search bar. For example: ["(Software Engineer OR Software Developer) AND (Selenium OR Python) NOT (Intern)"].
 
 # Search location, this will be filled in "City, state, or zip code" search box. If left empty as "", tool will not fill it.
-search_location = "Pune, Maharashtra, India"
+search_location = "India"
 # After how many number of applications in current search should the bot switch to next search? 
-switch_number = 10                 # Only numbers greater than 0... Don't put in quotes
+switch_number = 5                # Only numbers greater than 0... Don't put in quotes
 
 # Do you want to randomize the search order for search_terms?
 randomize_search_order = True    # True of False, Note: True or False are case-sensitive
@@ -31,7 +31,7 @@ This is below format: QUESTION = VALID_ANSWER
 '''
 
 sort_by = "Most recent"                       # "Most recent", "Most relevant" or ("" to not select) 
-date_posted = "Past week"         # "Any time", "Past month", "Past week", "Past 24 hours" or ("" to not select)
+date_posted = "Past 24 hours"         # "Any time", "Past month", "Past week", "Past 24 hours" or ("" to not select)
 salary = ""                        # "$40,000+", "$60,000+", "$80,000+", "$100,000+", "$120,000+", "$140,000+", "$160,000+", "$180,000+", "$200,000+"
 
 easy_apply_only = True             # True or False, Note: True or False are case-sensitive
@@ -72,7 +72,7 @@ pause_after_filters = True         # True or False, Note: True or False are case
 ## >>>>>>>>>>> SKIP IRRELEVANT JOBS <<<<<<<<<<<
  
 # Avoid applying to these companies, and companies with these bad words in their 'About Company' section...
-about_company_bad_words = ["Crossover"]       # (dynamic multiple search) or leave empty as []. Ex: ["Staffing", "Recruiting", "Name of Company you don't want to apply to"]
+about_company_bad_words = ["Crossover","Zetheta"]       # (dynamic multiple search) or leave empty as []. Ex: ["Staffing", "Recruiting", "Name of Company you don't want to apply to"]
 
 # Skip checking for `about_company_bad_words` for these companies if they have these good words in their 'About Company' section... [Exceptions, For example, I want to apply to "Robert Half" although it's a staffing company]
 about_company_good_words = []      # (dynamic multiple search) or leave empty as []. Ex: ["Robert Half", "Dice"]
